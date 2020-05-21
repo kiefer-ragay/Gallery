@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 
 const mysqlConfig = {
-  host: '54.215.111.162',
-  user: 'root',
-  password: '',
+  host: 'localhost',
+  user: 'student',
+  password: 'student',
   database: 'gallery',
 };
 const connection = mysql.createConnection(mysqlConfig);

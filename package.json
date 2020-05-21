@@ -8,7 +8,6 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "reset-db": "mysql -h 'db' -u root < schema.sql",
     "seed-db": "node db/seeder/seed.js",
     "react-dev": "webpack -w",
     "react-prod": "webpack --mode=production",
