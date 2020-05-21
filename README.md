@@ -11,7 +11,7 @@ npm run seed-db
 npm run server
 ```
 ## API Patterns
- ### Create a new product
+ ### **Create a new product**
 → app.post(‘/api/product’)
 
 **Request Body:** Expects JSON with the following keys
@@ -21,7 +21,7 @@ npm run server
 
   Success Status Code: 201
 
-### Create a new image
+### **Create a new image**
 
 → app.post(‘/api/images/:productid’)
   Success Status Code: 201
@@ -49,7 +49,7 @@ npm run server
    "images": "Array"
 }
 
-### Change an image for a certain product
+### **Change an image for a certain product**
   → app.put(‘/api/images/:productid/:imageid’)
 
   **Path Parameters**
@@ -64,7 +64,7 @@ npm run server
    }
 
 
-### Delete a product
+### **Delete a product**
   → app.delete(‘/api/product/:productid’)
 
   **Path Parameters**
@@ -72,7 +72,7 @@ npm run server
 
    **Success Status Code:** 204
 
-### Delete an image from a product
+### **Delete an image from a product**
 → app.delete(‘/api/images/:productid/:imageid’)
 
   **Path Parameters**
