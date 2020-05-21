@@ -15,9 +15,11 @@ npm run server
 → app.post(‘/api/product’)
 
 **Request Body:** Expects JSON with the following keys
+   ```
    {
       "name": "String"
    }
+   ```
 
   Success Status Code: 201
 
@@ -30,9 +32,11 @@ npm run server
    - productid : Unique ID of product
 
   **Request Body:** Expects JSON with the following keys
+  ```
    {
       "image": "String"
    }
+  ```
 
 
 **Get all images for product id**
@@ -44,10 +48,11 @@ npm run server
 **Success Status Code:** 200
 
 **Returns:** JSON with the following keys
-
+```
 {
    "images": "Array"
 }
+```
 
 ### **Change an image for a certain product**
   → app.put(‘/api/images/:productid/:imageid’)
@@ -59,10 +64,11 @@ npm run server
    **Success Status Code :** 202
 
    **Request Body:** Expects JSON with the following keys
+   ```
    {
       "image": "String"
    }
-
+   ```
 
 ### **Delete a product**
   → app.delete(‘/api/product/:productid’)
