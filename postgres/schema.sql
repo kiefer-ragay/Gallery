@@ -1,20 +1,30 @@
 DROP TABLE IF EXISTS products;
 
 CREATE TABLE products (
-    product_id SERIAL PRIMARY KEY,
-    image0 TEXT NOT NULL,
-    image1 TEXT NOT NULL,
-    image2 TEXT NOT NULL,
-    image3 TEXT NOT NULL,
-    image4 TEXT NOT NULL,
-    image5 TEXT NOT NULL,
-    image6 TEXT NOT NULL,
-    image7 TEXT NOT NULL,
-    image8 TEXT NOT NULL,
-    image9 TEXT NOT NULL,
-    image10 TEXT NOT NULL,
-    image11 TEXT NOT NULL,
-    image12 TEXT NOT NULL,
-    image13 TEXT NOT NULL,
-    image14 TEXT NOT NULL
+   product_id SERIAL PRIMARY KEY,
+   product_name VARCHAR(100) NOT NULL,
+   number_of_images INTEGER NOT NULL,
+   views INTEGER NOT NULL,
+   date_added INTEGER NOT NULL
+);
+
+DROP TABLE IF EXISTS images;
+
+CREATE TABLE images (
+   image_id SERIAL PRIMARY KEY,
+   image_url VARCHAR(300) NOT NULL,
+   views INTEGER NOT NULL,
+   height INTEGER NOT NULL,
+   width INTEGER NOT NULL,
+   quality CHAR NOT NULL,
+   date_added INTEGER NOT NULL
+);
+
+DROP TABLE IF EXISTS product_images;
+
+CREATE TABLE product_images (
+   reference_id SERIAL PRIMARY KEY,
+   product_id INTEGER REFERENCES products(product_id),
+   image_id INTEGER REFERENCES images(image_id),
+   image_number INTEGER NOT NULL
 );

@@ -29,7 +29,7 @@ npm run server
   Success Status Code: 201
 
   **Path Parameters**
-   - productid : Unique ID of product
+   - *productid* : Unique ID of product
 
   **Request Body:** Expects JSON with the following keys
   ```
@@ -37,9 +37,23 @@ npm run server
       "image": "String"
    }
   ```
+### **Get an images for product**
+→ app.get('/api/images/:productid/:imageid')
 
+**Path Parameters**
+   - *productid* : Unique ID of product
+   - *imageid* : Image ID for given product
 
-**Get all images for product id**
+**Success Status Code:** 200
+
+**Returns:** JSON with the following keys
+```
+{
+   "images": "Array"
+}
+```
+
+### **Get all images for product id**
 → app.get('/api/images/:productid')
 
 **Path Parameters**
@@ -51,6 +65,25 @@ npm run server
 ```
 {
    "images": "Array"
+}
+```
+
+### **Get product**
+→ app.get('/api/product/:productid')
+
+**Path Parameters**
+   - productid : Unique ID of product
+
+**Success Status Code:** 200
+
+**Returns:** JSON with the following keys
+```
+{
+   "product_id": "Integer",
+   "product_name": "String",
+   "number_of_images": "Integer",
+   "views": "Integer",
+   "date_added": "Integer"
 }
 ```
 
@@ -66,7 +99,10 @@ npm run server
    **Request Body:** Expects JSON with the following keys
    ```
    {
-      "image": "String"
+      "image_url": "String",
+      "height": "Integer",
+      "width": "Integer",
+      "quality": "Char"
    }
    ```
 
@@ -88,5 +124,32 @@ npm run server
   **Success Status Code:** 204
 
 
+## Schema
+
+### PRODUCT DOCUMENT
+
+```
+{
+  "product_id": "Integer",
+  "product_name": "String",
+  "number_of_images": "Integer",
+  "views": "Integer",
+  "date_added": "Integer",
+  "images": "Array"
+}
+```
+
+### IMAGE DOCUMENT
+```
+{
+   "image_id": "Integer",
+   "image_url": "String",
+   "views": "Integer",
+   "height": "Integer",
+   "width": "Integer",
+   "quality": "Char",
+   "date_added": "Integer"
+}
+```
 
 
