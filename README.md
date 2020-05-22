@@ -11,6 +11,9 @@ npm run seed-db
 npm run server
 ```
 ## API Patterns
+
+### Products
+
  ### **Create a new product**
 → app.post(‘/api/product’)
 
@@ -23,9 +26,38 @@ npm run server
 
   Success Status Code: 201
 
+### **Get product**
+→ app.get('/api/product/:productid')
+
+**Path Parameters**
+   - productid : Unique ID of product
+
+**Success Status Code:** 200
+
+**Returns:** JSON with the following keys
+```
+{
+   "product_id": "Integer",
+   "product_name": "String",
+   "views": "Integer",
+   "date_added": "Integer"
+   "images": "Array"
+}
+```
+
+### **Delete a product**
+  → app.delete(‘/api/product/:productid’)
+
+  **Path Parameters**
+   - *productid* : Unique ID of product
+
+   **Success Status Code:** 204
+
+### Images
+
 ### **Create a new image**
 
-→ app.post(‘/api/images/:productid’)
+→ app.post(‘/api/product/:productid/images/')
   Success Status Code: 201
 
   **Path Parameters**
@@ -37,11 +69,11 @@ npm run server
       "image": "String"
       "height": "Integer",
       "width": "Integer",
-      "quality": "Char"
    }
   ```
+
 ### **Get an image for product**
-→ app.get('/api/images/:productid/:imageid')
+→ app.get('/api/product/:productid/images/:imageid')
 
 **Path Parameters**
    - *productid* : Unique ID of product
@@ -57,44 +89,7 @@ npm run server
    "views": "Integer",
    "height": "Integer",
    "width": "Integer",
-   "quality": "Char",
-   "date_added": "Integer",
-   "image_number": "Integer"
-}
-```
-
-### **Get all images for product id**
-→ app.get('/api/images/:productid')
-
-**Path Parameters**
-   - productid : Unique ID of product
-
-**Success Status Code:** 200
-
-**Returns:** JSON with the following keys
-```
-{
-   "images": "Array"
-}
-```
-
-### **Get product**
-→ app.get('/api/product/:productid')
-
-**Path Parameters**
-   - productid : Unique ID of product
-
-**Success Status Code:** 200
-
-**Returns:** JSON with the following keys
-```
-{
-   "product_id": "Integer",
-   "product_name": "String",
-   "number_of_images": "Integer",
-   "views": "Integer",
    "date_added": "Integer"
-   "images": "Array"
 }
 ```
 
@@ -112,28 +107,18 @@ npm run server
    {
       "image_url": "String",
       "height": "Integer",
-      "width": "Integer",
-      "quality": "Char"
+      "width": "Integer"
    }
    ```
 
-### **Delete a product**
-  → app.delete(‘/api/product/:productid’)
-
-  **Path Parameters**
-   - *productid* : Unique ID of product
-
-   **Success Status Code:** 204
-
 ### **Delete an image from a product**
-→ app.delete(‘/api/images/:productid/:imageid’)
+→ app.delete(‘/api/product/:productid/images/:imageid’)
 
   **Path Parameters**
   - productid : Unique ID of product
   - imageid : Image ID for given product
 
   **Success Status Code:** 204
-
 
 ## NoSQL
 
@@ -143,7 +128,6 @@ npm run server
 {
   "product_id": "Integer",
   "product_name": "String",
-  "number_of_images": "Integer",
   "views": "Integer",
   "date_added": "Integer",
   "images": "Array"
@@ -158,8 +142,6 @@ npm run server
    "views": "Integer",
    "height": "Integer",
    "width": "Integer",
-   "quality": "Char",
    "date_added": "Integer",
-   "image_number": "Integer"
 }
 ```
