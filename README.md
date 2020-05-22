@@ -35,9 +35,12 @@ npm run server
   ```
    {
       "image": "String"
+      "height": "Integer",
+      "width": "Integer",
+      "quality": "Char"
    }
   ```
-### **Get an images for product**
+### **Get an image for product**
 → app.get('/api/images/:productid/:imageid')
 
 **Path Parameters**
@@ -49,7 +52,14 @@ npm run server
 **Returns:** JSON with the following keys
 ```
 {
-   "images": "Array"
+   "image_id": "Integer",
+   "image_url": "String",
+   "views": "Integer",
+   "height": "Integer",
+   "width": "Integer",
+   "quality": "Char",
+   "date_added": "Integer",
+   "image_number": "Integer"
 }
 ```
 
@@ -84,6 +94,7 @@ npm run server
    "number_of_images": "Integer",
    "views": "Integer",
    "date_added": "Integer"
+   "images": "Array"
 }
 ```
 
@@ -124,7 +135,7 @@ npm run server
   **Success Status Code:** 204
 
 
-## Schema
+## NoSQL
 
 ### PRODUCT DOCUMENT
 
@@ -148,8 +159,7 @@ npm run server
    "height": "Integer",
    "width": "Integer",
    "quality": "Char",
-   "date_added": "Integer"
+   "date_added": "Integer",
+   "image_number": "Integer"
 }
 ```
-
-
