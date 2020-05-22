@@ -94,7 +94,7 @@ npm run server
 ```
 
 ### **Change an image for a certain product**
-  → app.put(‘/api/images/:productid/:imageid’)
+  → app.put(‘/api/product/:productid/images/:imageid’)
 
   **Path Parameters**
    - *productid* : Unique ID of product
