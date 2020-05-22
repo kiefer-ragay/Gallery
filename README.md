@@ -40,7 +40,7 @@ npm run server
    "product_id": "Integer",
    "product_name": "String",
    "views": "Integer",
-   "date_added": "Integer"
+   "date_added": "Date"
    "images": "Array"
 }
 ```
@@ -66,7 +66,7 @@ npm run server
   **Request Body:** Expects JSON with the following keys
   ```
    {
-      "image": "String"
+      "image_url": "String"
       "height": "Integer",
       "width": "Integer",
    }
@@ -89,7 +89,7 @@ npm run server
    "views": "Integer",
    "height": "Integer",
    "width": "Integer",
-   "date_added": "Integer"
+   "date_added": "Date"
 }
 ```
 
@@ -119,29 +119,3 @@ npm run server
   - imageid : Image ID for given product
 
   **Success Status Code:** 204
-
-## NoSQL
-
-### PRODUCT DOCUMENT
-
-```
-{
-  "product_id": "Integer",
-  "product_name": "String",
-  "views": "Integer",
-  "date_added": "Integer",
-  "images": "Array"
-}
-```
-
-### IMAGE DOCUMENT
-```
-{
-   "image_id": "Integer",
-   "image_url": "String",
-   "views": "Integer",
-   "height": "Integer",
-   "width": "Integer",
-   "date_added": "Integer",
-}
-```
