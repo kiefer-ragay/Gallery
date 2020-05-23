@@ -1,5 +1,6 @@
 const images = require('./images.js');
 const path = require('path');
+const dateGenerator = require('./randomDateMaker.js');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const csvWriter = createCsvWriter({
@@ -22,10 +23,7 @@ for (let i = 0; i < images.length; i += 1) {
   newRecord.views = Math.floor(Math.random() * (100000 - 27) + 27);
   newRecord.height = Math.floor(Math.random() * (2001 - 400) + 400);
   newRecord.width = Math.floor(Math.random() * (2001 - 400) + 400);
-  const randomYear = Math.floor(Math.random() * (2021-2012) + 2012);
-  const randomMonth = Math.floor(Math.random() * 12);
-  const randomDay = Math.floor(Math.random() * 32);
-  newRecord.date_added = new Date(randomYear, randomMonth, randomDay);
+  newRecord.date_added = dateGenerator();
   records.push(newRecord);
 };
 
