@@ -1,26 +1,28 @@
 const mongoose = require('mongoose');
-const ObjectID = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectID;
 const Image = require('../schema.js').Image;
 const images = require('./images.js');
 const imageIds = require('./imageIds.js');
 
-mongoose.connect('mongodb://localhost/gallery');
+mongoose.connect('mongodb://localhost/gallery', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
-db.once('open'), () => {
-  console.log('Connected to Gallery, seeding...');
+db.on('error', console.error.bind(console, 'connection error:'));
 
-}
+db.once('open', () => {
+  console.log('Connected to Gallery, seeding...');
+  imageSeeder();
+});
 
 const imageSeeder = () => {
   for ( let i = 0; i < images.length; i ++) {
     const randomYear = Math.floor(Math.random() * (2021-2012) + 2012);
     const randomMonth = Math.floor(Math.random() * 12);
     const randomDay = Math.floor(Math.random() * 32);
-    const ImageEntry = new schema.Image({
+    const ImageEntry = new Image({
       _id: ObjectId(imageIds[i]),
-      image_url: images[i],
+      image_url: images[i].image_url,
       views: Math.floor(Math.random() * (100000 - 27) + 27),
       height: Math.floor(Math.random() * (2001 - 400) + 400),
       width: Math.floor(Math.random() * (2001 - 400) + 400),
@@ -32,5 +34,4 @@ const imageSeeder = () => {
       }
     });
   }
-
 }
