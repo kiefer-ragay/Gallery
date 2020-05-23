@@ -9,4 +9,6 @@ const imageSetMaker = (numComboItems) => {
   return Array.from(imageSet);
 };
 
+
+console.log
 module.exports = imageSetMaker;

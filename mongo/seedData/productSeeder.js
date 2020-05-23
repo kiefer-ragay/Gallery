@@ -9,13 +9,13 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 
-db.once('open'), () => {
+db.once('open', () => {
   console.log('Connected to Gallery, seeding...');
 
-}
+});
 
 const productSeeder = () => {
-  for ( let i = 0; i < 5; i ++) {
+  for ( let i = 0; i < 1000000; i ++) {
     const randomYear = Math.floor(Math.random() * (2021-2012) + 2012);
     const randomMonth = Math.floor(Math.random() * 12);
     const randomDay = Math.floor(Math.random() * 32);
