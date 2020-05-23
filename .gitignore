@@ -39,4 +39,4 @@ STYLE-GUIDE.md
 coverage/
 *.csv
 
-dump
+mongo/seedData/dump/
