@@ -1,6 +1,5 @@
 const path = require('path');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const imageSetMaker = require('./imageSetMaker.js');
 const nameGenerator = require('./productNameGenerator');
 const dateGenerator = require('./randomDateMaker.js');
 
