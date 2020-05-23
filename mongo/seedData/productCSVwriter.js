@@ -3,13 +3,6 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const imageSetMaker = require('./imageSetMaker.js');
 const nameGenerator = require('./productNameGenerator');
 
-
-
-
-
-
-
-
 const csvWriter = createCsvWriter({
   path: path.join(__dirname, 'products.csv'),
   header: [
@@ -24,8 +17,7 @@ const records = [];
 
 for (let i = 0; i < 5; i += 1) {
   let newRecord = {};
-  newRecord.product_name =
-
+  newRecord.product_name = nameGenerator();
   newRecord.views = Math.floor(Math.random() * (100000 - 27) + 27);
   const randomYear = Math.floor(Math.random() * (2021 - 2012) + 2012);
   const randomMonth = Math.floor(Math.random() * 12);
