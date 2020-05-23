@@ -6,11 +6,11 @@ const imageIds = require('./imageIds.js');
 
 mongoose.connect('mongodb://localhost/gallery', { useNewUrlParser: true });
 
-const db = mongoose.connection;
+const connection = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'connection error:'));
+connection.on('error', console.error.bind(console, 'connection error:'));
 
-db.once('open', () => {
+connection.once('open', () => {
   console.log('Connected to Gallery, seeding...');
   imageSeeder();
 });
@@ -34,4 +34,5 @@ const imageSeeder = () => {
       }
     });
   }
+  console.log('Seeding Completed');
 }
