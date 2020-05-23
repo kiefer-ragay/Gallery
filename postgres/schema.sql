@@ -22,6 +22,6 @@ DROP TABLE IF EXISTS product_images;
 
 CREATE TABLE product_images (
    reference_id SERIAL PRIMARY KEY,
-   product_id INTEGER REFERENCES products(product_id),
-   image_id INTEGER REFERENCES images(image_id)
+   product_id INTEGER NOT NULL REFERENCES,
+   image_id INTEGER NOT NULL
 );
