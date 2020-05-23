@@ -1,19 +1,19 @@
 const adjectives = [
   'Frumpy', 'Pure', 'Outdated', 'Tasteless', 'Tasteful',
-  'Melted', 'Arrogant', 'Dusty', 'Immense', 'Disproportionate',
+  'Melted', 'Unbelievable', 'Dusty', 'Immense', 'Disproportionate',
   'Colossal', 'Ginormous', 'Mediocre', 'Puny', 'Average', 'Ugly',
   'Prickly', 'Broken', 'Filthy', 'Defiant', 'Ill-Conceived',
   'Wet', 'Magnificent', 'Fabulous', 'Poorly-Constructed',
-  'Just Okay', 'Used', 'Mysterious', "Rambunctious", 'Fergilicious',
-  'Giant', 'Aggressive', 'Triumphant', 'Fake', 'Expensive', 'Rusty'
+  'Just-Okay', 'Used', 'Mysterious', "Rambunctious", 'Fergilicious',
+  'Giant', 'Aggressive', 'Excessive', 'Fake', 'Expensive', 'Rusty'
 ];
 
 const colors = [
   'Mauve', 'Flesh-Colored', 'Brown', 'Magenta', 'Rainbow',
   'Pink', 'Flesh-Colored', 'Red', 'Razzmatazz', 'Periwinkle',
-  'Sage', 'Fushcia', 'Strawberry Red', 'Lipstick Green', 'Pickle-Colored',
-  'Butterscotch Yellow', 'Crusty Brown', 'Fancy Green', 'Bronze', 'Blue',
-  'Lemon Zest Yellow', 'Raisin Purple', 'Musty Orange', 'Mahogany'
+  'Sage', 'Fushcia', 'Strawberry-Red', 'Lipstick-Green', 'Pickle-Colored',
+  'Butterscotch-Yellow', 'Crusty Brown', 'Fancy Green', 'Bronze', 'Blue',
+  'Lemon Zest-Yellow', 'Raisin-Purple', 'Musty Orange', 'Mahogany'
 ];
 
 const toys = [
@@ -24,7 +24,7 @@ const toys = [
   'Millenial', 'Gen Z', 'Boomer', 'Amelia Lockhart', 'Darth Vader', 'R2-D2',
   'Jar Jar Binks', 'Wookie', 'Catwoman', 'Catman', 'Batman', 'Teen Titans',
   'Tween Titans', 'My Sweet 16', 'Newborne Child', 'Hilary', 'Karen', 'Racecar',
-  'Orc', 'Gnome', 'Construction Man', 'Fat Chocobo', 'Wolverine', 'Jean Gray'
+  'Orc', 'Gnome', 'Construction Man', 'Fat Chocobo', 'Wolverine', 'Phoenix'
 ];
 
 const setNames = [

@@ -20,10 +20,10 @@ const randomDateMaker = () => {
   const randomDate = new Date(randomYear, randomMonth, randomDay);
 
   const formattedDay = days[randomDate.getDate() - 1];
-  console.log(randomDate.getDate());
   const formattedYear = randomDate.getYear() + 1900;
   const formattedMonth = months[randomDate.getMonth()];
   return `${formattedYear}-${formattedMonth}-${formattedDay}`;
 };
 
-console.log(randomDateMaker());
+
+module.exports = randomDateMaker;
