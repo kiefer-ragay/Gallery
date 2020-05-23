@@ -13,15 +13,15 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Connected to Gallery, seeding...');
   promisedSeeder(0, 100000)
-    .then(promisedSeeder(100001, 200000))
-    .then(promisedSeeder(200001, 300000))
-    .then(promisedSeeder(300001, 400000))
-    .then(promisedSeeder(400001, 500000))
-    .then(promisedSeeder(500001, 600000))
-    .then(promisedSeeder(600001, 700000))
-    .then(promisedSeeder(700001, 800000))
-    .then(promisedSeeder(800001, 900000))
-    .then(promisedSeeder(900001, 999999))
+    .then(promisedSeeder(100001, 200000).delay(60000))
+    .then(promisedSeeder(200001, 300000).delay(60000))
+    .then(promisedSeeder(300001, 400000).delay(60000))
+    .then(promisedSeeder(400001, 500000).delay(60000))
+    .then(promisedSeeder(500001, 600000).delay(60000))
+    .then(promisedSeeder(600001, 700000).delay(60000))
+    .then(promisedSeeder(700001, 800000).delay(60000))
+    .then(promisedSeeder(800001, 900000).delay(60000))
+    .then(promisedSeeder(900001, 999999).delay(60000))
 
 });
 
