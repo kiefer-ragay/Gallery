@@ -13,13 +13,13 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Connected to Gallery, seeding...');
 
-  promisedSeeder(500001, 1000000);
+  promisedSeeder(9500001, 10000000);
 
 
 });
 
 const productSeeder = (start, stop) => {
-  console.log('Running!');
+  console.log(`Running seed from ${start} to ${stop}!`);
   const records = [];
   for ( let i = start; i <= stop; i +=1 ) {
     const randomYear = Math.floor(Math.random() * (2021-2012) + 2012);
@@ -36,11 +36,10 @@ const productSeeder = (start, stop) => {
 
   }
   Product.bulkWrite(records)
-   .then(console.log('Complete'))
+   .then(console.log(`Seeding ${start} to ${stop} complete`))
    .catch( (err) => {
      console.log(err);
    });
-  console.log(`Seeding ${start} to ${stop} Complete`);
 }
 
 const promisedSeeder = promise.promisify(productSeeder);
