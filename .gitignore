@@ -38,5 +38,8 @@ STYLE-GUIDE.md
 .vscode
 coverage/
 *.csv
+/postgres
 
-mongo/seedData/dump/
+mongo/seedData/dump//gallery/*
+mongo/seedData/*.csv
+postgres/seedData/*.csv
