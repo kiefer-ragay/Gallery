@@ -15,7 +15,7 @@ const csvWriter = createCsvWriter({
 
 const records = [];
 
-for (let i = 0; i < 10000000; i += 1) {
+for (let i = 0; i <= 10000000; i += 1) {
   let newRecord = {};
   newRecord.product_id = i;
   newRecord.product_name = nameGenerator();

@@ -4,6 +4,7 @@ const imageSetMaker = require('./imageSetMaker.js');
 const fs = require('fs');
 
 const csvWriter = createCsvWriter({
+  // must specify new name for file to prevent overwriting
   path: path.join(__dirname, 'references4.csv'),
   header: [
     { id: 'reference_id', title: 'reference_id' },
@@ -16,10 +17,10 @@ const csvWriter = createCsvWriter({
 const writeToCSV = (start, end) => {
 
   const records = [];
-  let referenceCounter = 0;
   // i must match the number of products in the database!
-  for (let i = start; i < end; i += 1) {
-    let imageSet = imageSetMaker(Math.floor(Math.random() * (15-7) + 7));
+  let referenceCounter = start * 10;
+  for (let i = start; i <= end; i += 1) {
+    let imageSet = imageSetMaker(10);
     for (imageId of imageSet) {
       let newRecord = {};
       newRecord.reference_id = referenceCounter;
@@ -36,6 +37,4 @@ const writeToCSV = (start, end) => {
     });
 };
 
-
 writeToCSV(7500001, 10000000);
-
