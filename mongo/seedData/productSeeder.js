@@ -13,7 +13,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Connected to Gallery, seeding...');
 
-  promisedSeeder(0, 500000);
+  promisedSeeder(3500001, 4000000);
 
 
 });
@@ -32,10 +32,12 @@ const productSeeder = (start, stop) => {
       newProduct.date_added = new Date(randomYear, randomMonth, randomDay);
       newProduct.images = imageSetMaker(Math.random() * (16 - 8) + 8);
 
-    records.push({ insertOne: {document: newProduct} } );
+      //Product.save(newProduct);
+
+    records.push(newProduct);
 
   }
-  Product.bulkWrite(records)
+  Product.insertMany(records)
    .then(console.log(`Seeding ${start} to ${stop} complete`))
    .catch( (err) => {
      console.log(err);

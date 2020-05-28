@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/gallery', { useNewURLParser: true }
 );
 
-const db = mongoose.connection;
+const connection = mongoose.connection;
 
-db.once('open', () => {
+connection.once('open', () => {
   console.log('Connected to Database on collection Gallery!');
 });
+
+module.exports = connection;
