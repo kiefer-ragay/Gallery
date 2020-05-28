@@ -17,9 +17,21 @@ const imageSchema = new mongoose.Schema({
   date_added: Date
 });
 
+productSchema.pre('findOne', function() {
+  this._startTime = Date.now();
+});
+
+productSchema.post('findOne', function() {
+  if (this._startTime != null) {
+    console.log('Runtime in MS: ', Date.now() - this._startTime);
+  }
+});
+
 const Product = mongoose.model('Product', productSchema);
 
 const Image = mongoose.model('Image', imageSchema);
 
+module.exports.productSchema = productSchema;
+module.exports.imageSchema = imageSchema;
 module.exports.Product = Product;
 module.exports.Image = Image;
