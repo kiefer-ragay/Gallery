@@ -43,7 +43,9 @@ const openAndQuery = (query) => {
       console.log('Successfully connected to server through client');
       const db = client.db(dbName);
       const products = db.collection('products');
-      query();
+      query(products, client);
+    }
+  });
 }
 
 
@@ -55,9 +57,32 @@ const logResults = (err, results) => {
   }
 };
 
-getProduct(1, logResults);
+const getProduct2 = (id, callback) => {
 
+  const query = (products, client) => {
+    products.aggregate([{
+      $match: {product_id: id}
+      },
+      {
+        $lookup: {
+          from: "images",
+          localField: "images",
+          foreignField: "_id",
+          as: "images"
+        }
+      }
+    ]).each((err, results) => {
+          if (err) {
+            callback(err);
+          } else {
+            callback(null, results);
+            client.close();
+            return false;
+          }
+      });
+  }
+  openAndQuery(query);
 
+};
 
-
-
+getProduct2(1, logResults);
