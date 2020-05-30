@@ -3,38 +3,6 @@ const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost/:27017';
 const dbName = 'gallery';
 
-const getProduct = (id, callback) => {
-  MongoClient.connect(url, (err, client) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('Successfully connected to server through client');
-      const db = client.db(dbName);
-      const products = db.collection('products');
-      products.aggregate([{
-        $match: {product_id: id}
-        },
-        {
-          $lookup: {
-            from: "images",
-            localField: "images",
-            foreignField: "_id",
-            as: "images"
-          }
-        }
-      ]).each((err, results) => {
-            if (err) {
-              callback(err);
-            } else {
-              callback(null, results);
-              client.close();
-              return false;
-            }
-          });
-    }
-  });
-};
-
 const openAndQuery = (query) => {
   MongoClient.connect(url, (err, client) => {
     if (err) {
@@ -57,7 +25,7 @@ const logResults = (err, results) => {
   }
 };
 
-const getProduct2 = (id, callback) => {
+const getProduct = (id, callback) => {
 
   const query = (products, client) => {
     products.aggregate([{
@@ -85,4 +53,4 @@ const getProduct2 = (id, callback) => {
 
 };
 
-getProduct2(1, logResults);
+getProduct(1, logResults);
