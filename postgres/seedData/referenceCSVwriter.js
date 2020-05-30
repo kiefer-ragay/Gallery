@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const csvWriter = createCsvWriter({
   // must specify new name for file to prevent overwriting
-  path: path.join(__dirname, 'references4.csv'),
+  path: path.join(__dirname, 'referencesTest.csv'),
   header: [
     { id: 'reference_id', title: 'reference_id' },
     { id: 'product_id', title: 'product_id' },
@@ -38,3 +38,4 @@ const writeToCSV = (start, end) => {
 };
 
 writeToCSV(7500001, 10000000);
+

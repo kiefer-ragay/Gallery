@@ -44,3 +44,4 @@ mongo/seedData/dump/gallery/
 
 mongo/seedData/*.csv
 postgres/seedData/*.csv
+postgres/seedData/dump/*
