@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
-app.get('/api/images/:id', (req, res) => {
+app.get('/api/products/:id', (req, res) => {
   getProductImages(req.params.id, (error, results) => {
     if (error) {
       res.status(500).send(error);
