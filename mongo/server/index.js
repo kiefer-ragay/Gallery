@@ -6,7 +6,7 @@ const compression = require('compression');
 const middleware = require('./middleware.js');
 
 
-const getProduct = require('../database/mongoQueries.js').getProduct;
+const controller = require('../database/mongoQueries.js');
 
 const app = express();
 
@@ -17,7 +17,20 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 app.get('/api/products/:id', (req, res) => {
-  getProduct(req.params.id, (error, results) => {
+  controller.getProduct(req.params.id, (error, results) => {
+    console.log(results);
+    if (error) {
+      res.status(500).send(error);
+    // } else if (results.length === 0) {
+    //   res.status(404).send('Product does not exist');
+    } else {
+      res.status(200).send(results);
+    }
+  });
+});
+
+app.post('/api/products/:product_name', (req, res) => {
+  controller.addProduct(req.params.id, (error, results) => {
     console.log(results);
     if (error) {
       res.status(500).send(error);
