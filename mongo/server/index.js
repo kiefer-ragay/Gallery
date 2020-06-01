@@ -29,7 +29,7 @@ app.get('/api/products/:id', (req, res) => {
 });
 
 app.post('/api/products/:product_name', (req, res) => {
-  controller.addProduct(req.params.id, (error, results) => {
+  controller.addProduct(req.params.product_name, (error, results) => {
     console.log(results);
     if (error) {
       res.status(500).send(error);

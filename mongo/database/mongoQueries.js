@@ -57,7 +57,7 @@ const addRandomProduct = (productName, callback) => {
   product.views = 0;
   product.date_added = new Date();
   product.images = imageSetMaker(10);
-  product.product_id = Math.random() * 10000000 + 10000001;
+  product.product_id = Math.floor(Math.random() * 10000000 + 10000001);
   const query = (products, client) => {
     products.insertOne(product, (err, result) => {
       if (err) {
