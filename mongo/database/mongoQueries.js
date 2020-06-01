@@ -133,3 +133,4 @@ const promisedUpdate = (products, client, id) => {
   });
 }
 
+module.exports.getProduct = getProduct;
