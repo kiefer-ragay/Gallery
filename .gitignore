@@ -45,3 +45,4 @@ mongo/database/seedData/dump/gallery/*
 mongo/database/seedData/*.csv
 postgres/seedData/*.csv
 postgres/seedData/dump/*
+newrelic.js

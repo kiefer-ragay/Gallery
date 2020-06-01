@@ -10,7 +10,6 @@ const openAndQuery = (query) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('Successfully connected to database');
       const db = client.db(dbName);
       const products = db.collection('products');
       query(products, client);

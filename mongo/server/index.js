@@ -1,9 +1,10 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
-const middleware = require('./middleware.js');
+
 
 
 const controller = require('../database/mongoQueries.js');
@@ -12,13 +13,11 @@ const app = express();
 
 app.use(compression());
 app.use(cors());
-app.use(middleware);
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 app.get('/api/products/:id', (req, res) => {
   controller.getProduct(req.params.id, (error, results) => {
-    console.log(results);
     if (error) {
       res.status(500).send(error);
     // } else if (results.length === 0) {
