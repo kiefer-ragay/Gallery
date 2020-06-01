@@ -10,7 +10,7 @@ const openAndQuery = (query) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('Successfully connected to server through client');
+      console.log('Successfully connected to database');
       const db = client.db(dbName);
       const products = db.collection('products');
       query(products, client);
@@ -29,7 +29,7 @@ const logResults = (err, results) => {
 const getProduct = (id, callback) => {
   const query = (products, client) => {
     products.aggregate([{
-      $match: { product_id: id }
+      $match: { product_id: parseInt(id) }
     },
     {
       $lookup: {
@@ -106,8 +106,8 @@ const addNames = () => {
 }
 
 
-//getProduct(1, logResults);
-addNames();
+// getProduct(1, logResults);
+// addNames();
 
 const promisedUpdate = (products, client, id) => {
   return new Promise((resolve) => {

@@ -11,7 +11,7 @@
     "seed-db": "node db/seeder/seed.js",
     "react-dev": "webpack -w",
     "react-prod": "webpack --mode=production",
-    "start": "nodemon .mongo/server/index.js",
+    "start": "nodemon ./mongo/server/index.js",
     "build:docker": "bash container.bash",
     "test": "jest --verbose",
     "test:watch": "jest --watch",

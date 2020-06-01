@@ -19,7 +19,7 @@ export default class App extends Component {
   componentDidMount() {
     const randomProductId = Math.floor(Math.random() * 100) + 1;
     API.getProduct(randomProductId)
-      .then((data) => (this.setState({ data  : data.images  }))) // comment back in to use new db setup
+      .then((data) => (this.setState({ data : data.images  }))) // comment back in to use new db setup
       .catch((err) => {
         throw Error(err);
       });
