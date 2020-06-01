@@ -40,8 +40,8 @@ coverage/
 *.csv
 
 
-mongo/seedData/dump/gallery/
+mongo/database/seedData/dump/gallery/*
 
-mongo/seedData/*.csv
+mongo/database/seedData/*.csv
 postgres/seedData/*.csv
 postgres/seedData/dump/*
