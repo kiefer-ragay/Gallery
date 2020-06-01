@@ -63,6 +63,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "jest": "^25.5.4",
+    "k6": "0.0.0",
     "supertest": "^4.0.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
