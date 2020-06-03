@@ -1,4 +1,5 @@
 require('newrelic');
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -6,6 +7,8 @@ const cors = require('cors');
 const compression = require('compression');
 
 const controller = require('../database/mongoQueries.js');
+
+const port = process.env.GALLERY_PORT || 3001;
 
 const connection = require('../database/index.js');
 
@@ -45,7 +48,7 @@ app.post('/api/products/:product_name', (req, res) => {
   });
 });
 
-const port = 3001;
+
 app.listen(port, () => console.log(`Gallery component ${port}`));
 
 
