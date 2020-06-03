@@ -25,50 +25,42 @@ const logResults = (err, results) => {
   }
 };
 
-const getProduct = (id, callback) => {
-  const query = (products, client) => {
-    products.aggregate([{
-      $match: { product_id: parseInt(id) }
-    },
-    {
-      $lookup: {
-        from: "images",
-        localField: "images",
-        foreignField: "_id",
-        as: "images"
-      }
+const getProduct = (id, collection, callback) => {
+  collection.aggregate([{
+    $match: { product_id: parseInt(id) }
+  },
+  {
+    $lookup: {
+      from: "images",
+      localField: "images",
+      foreignField: "_id",
+      as: "images"
     }
-    ]).each((err, results) => {
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, results);
-        client.close();
-        return false;
-      }
-    });
   }
-  openAndQuery(query);
+  ]).each((err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, results);
+      return false;
+    }
+  });
 };
 
-const addRandomProduct = (productName, callback) => {
+const addRandomProduct = (productName, collection, callback) => {
   product = {};
   product.product_name = nameGenerator();
   product.views = 0;
   product.date_added = new Date();
   product.images = imageSetMaker(10);
   product.product_id = Math.floor(Math.random() * 10000000 + 10000001);
-  const query = (products, client) => {
-    products.insertOne(product, (err, result) => {
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, result);
-      }
-    })
-  };
-
-  openAndQuery(query);
+  collection.insertOne(product, (err, result) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, result);
+    }
+  })
 };
 
 const updateProduct = (id, newName, callback) => {
@@ -84,56 +76,6 @@ const updateProduct = (id, newName, callback) => {
   openAndQuery(query);
 }
 
-const addNames = () => {
-  MongoClient.connect(url, (err, client) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('Successfully connected to server through client');
-      const db = client.db(dbName);
-      const products = db.collection('products');
-      //const count = products.countDocuments();
-      // console.log(count);
-      let i = 0;
-      let chain = Promise.resolve();
-      while (i < 5) {
-        chain = chain
-          .then(() => {
-              promisedUpdate(products, client, i);
-            });
-          i += 1;
-      }
-    }
-  });
-}
-
-
-// getProduct(1, logResults);
-// addNames();
-
-const promisedUpdate = (products, client, id) => {
-  return new Promise((resolve) => {
-    const newName = nameGenerator();
-
-    products.findOne( {product_id: id}, (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(result);
-        resolve();
-
-      }
-    });
-    // products.updateOne({ product_id: id }, {$set: { 'product_name': newName } }, (err, result) => {
-    //   if (err) {
-    //     console.log(err);
-    //   } else {
-    //     console.log(newName);
-    //     resolve();
-    //   }
-    // });
-  });
-}
 
 module.exports.getProduct = getProduct;
 module.exports.addProduct = addRandomProduct;

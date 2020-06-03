@@ -5,9 +5,15 @@ const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
 
+const controller = require('../database/mongoqueries.js');
 
+const connection = require('../database/index.js');
 
-const controller = require('../database/mongoQueries.js');
+let products;
+connection((err, client) => {
+  products = client.db('gallery').collection('products');
+});
+
 
 const app = express();
 
@@ -17,7 +23,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 app.get('/api/products/:id', (req, res) => {
-  controller.getProduct(req.params.id, (error, results) => {
+  controller.getProduct(req.params.id, products, (error, results) => {
     if (error) {
       res.status(500).send(error);
     // } else if (results.length === 0) {
@@ -29,7 +35,7 @@ app.get('/api/products/:id', (req, res) => {
 });
 
 app.post('/api/products/:product_name', (req, res) => {
-  controller.addProduct(req.params.product_name, (error, results) => {
+  controller.addProduct(req.params.product_name, products, (error, results) => {
     if (error) {
       res.status(500).send(error);
     // } else if (results.length === 0) {
