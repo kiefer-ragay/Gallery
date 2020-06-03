@@ -5,7 +5,7 @@ const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
 
-const controller = require('../database/mongoqueries.js');
+const controller = require('../database/mongoQueries.js');
 
 const connection = require('../database/index.js');
 
@@ -13,7 +13,6 @@ let products;
 connection((err, client) => {
   products = client.db('gallery').collection('products');
 });
-
 
 const app = express();
 
