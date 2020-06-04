@@ -1,8 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 const imageSetMaker = require('./seedData/imageSetMaker.js');
 const nameGenerator = require('./seedData/productNameGenerator.js');
-// const redisClient = require('redis').createClient;
-// const redis = redisClient(6379, 'localhost');
+const redisClient = require('redis').createClient;
+const redis = redisClient(6379, 'localhost');
 
 const url = 'mongodb://localhost/:27017';
 const dbName = 'gallery';
