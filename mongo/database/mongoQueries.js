@@ -8,12 +8,12 @@ const url = 'mongodb://localhost/:27017';
 const dbName = 'gallery';
 
 const getProduct = (id, collection, callback) => {
-  // redis.get(id, (err, results) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else if (results) {
-  //     callback(null, JSON.parse(results));
-  //   } else {
+  redis.get(id, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else if (results) {
+      callback(null, JSON.parse(results));
+    } else {
       collection.aggregate([{
         $match: { product_id: parseInt(id) }
       },
@@ -29,13 +29,13 @@ const getProduct = (id, collection, callback) => {
         if (err) {
           callback(err);
         } else {
-          // redis.set(id, JSON.stringify(results));
+          redis.set(id, JSON.stringify(results));
           callback(null, results);
           return false;
         }
       });
-  //   }
-  // });
+    }
+  });
 
 };
 
