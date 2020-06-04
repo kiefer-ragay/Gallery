@@ -1,29 +1,11 @@
 const MongoClient = require('mongodb').MongoClient;
 const imageSetMaker = require('./seedData/imageSetMaker.js');
 const nameGenerator = require('./seedData/productNameGenerator.js');
+const redisClient = require('redis').createClient;
+const redis = redisClient(6379, 'localhost');
 
 const url = 'mongodb://localhost/:27017';
 const dbName = 'gallery';
-
-const openAndQuery = (query) => {
-  MongoClient.connect(url, (err, client) => {
-    if (err) {
-      console.log(err);
-    } else {
-      const db = client.db(dbName);
-      const products = db.collection('products');
-      query(products, client);
-    }
-  });
-};
-
-const logResults = (err, results) => {
-  if (err) {
-    console.log(`Got error: ${err}`);
-  } else {
-    console.log(results);
-  }
-};
 
 const getProduct = (id, collection, callback) => {
   collection.aggregate([{
