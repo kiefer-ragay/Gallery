@@ -8,25 +8,35 @@ const url = 'mongodb://localhost/:27017';
 const dbName = 'gallery';
 
 const getProduct = (id, collection, callback) => {
-  collection.aggregate([{
-    $match: { product_id: parseInt(id) }
-  },
-  {
-    $lookup: {
-      from: "images",
-      localField: "images",
-      foreignField: "_id",
-      as: "images"
-    }
-  }
-  ]).each((err, results) => {
+  redis.get(id, (err, results) => {
     if (err) {
-      callback(err);
-    } else {
+      console.log(err);
+    } else if (results) {
       callback(null, results);
-      return false;
+    } else {
+      collection.aggregate([{
+        $match: { product_id: parseInt(id) }
+      },
+      {
+        $lookup: {
+          from: "images",
+          localField: "images",
+          foreignField: "_id",
+          as: "images"
+        }
+      }
+      ]).each((err, results) => {
+        if (err) {
+          callback(err);
+        } else {
+          redis.set(id, JSON.stringify(results));
+          callback(null, results);
+          return false;
+        }
+      });
     }
   });
+
 };
 
 const addRandomProduct = (productName, collection, callback) => {
