@@ -12,7 +12,7 @@ const getProduct = (id, collection, callback) => {
     if (err) {
       console.log(err);
     } else if (results) {
-      callback(null, results);
+      callback(null, JSON.parse(results));
     } else {
       collection.aggregate([{
         $match: { product_id: parseInt(id) }
