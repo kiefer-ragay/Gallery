@@ -1,15 +1,7 @@
-# FEC Project
-## Gallery Component
+# BlockBuyer Image Gallery
 
-Instructions to get the component up and running
-> Some usage instructions
+Toy product image gallery built using React.js on the frontend - optimized backend using MongoDB, expressJS
 
-```bash
-npm install
-npm run reset-db
-npm run seed-db
-npm run server
-```
 ## API Patterns
 
 ### Products
